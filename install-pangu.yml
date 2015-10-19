@@ -1,0 +1,18 @@
+---
+- name: install zookeeper
+  hosts: pangu-zookeeper
+  sudo: yes
+  roles:
+    - pangu-zookeeper
+
+- name: install redis
+  hosts: pangu-redis
+  sudo: yes
+  roles:
+    - pangu-redis
+
+- name: install storm
+  hosts: pangu-storm
+  sudo: yes
+  roles:
+    - pangu-storm

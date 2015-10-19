@@ -1,0 +1,12 @@
+---
+ - name: add nimbus.conf
+   copy: src=nimbus.ini dest=/etc/supervisord.d/nimbus.ini
+   notify: Restart supervisord
+ 
+ - name: add ui.conf
+   copy: src=ui.ini dest=/etc/supervisord.d/ui.ini
+   notify: Restart supervisord
+ 
+ - name: Enable 8080
+   firewalld: port=8080/tcp permanent=true state=enabled
+   notify: Restart firewalld

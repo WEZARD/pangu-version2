@@ -1,0 +1,31 @@
+---
+- name: copy storm-rpm
+  copy: src=x86_64/apache-storm-0.9.4-1.x86_64.rpm dest=/opt
+
+- name: install storm
+  yum: name=/opt/apache-storm-0.9.4-1.x86_64.rpm state=present
+
+- file: path=/opt/apache-storm-0.9.4/data state=directory mode="u=rwx,g=rx,o=rx"
+
+- name: change user to fudi
+  command: chown -R fudi:fudi /opt
+
+- name: add hostname
+  lineinfile: dest=/etc/hosts
+              line="{{ hostvars[item]['ipv6_addr'] }} {{item}}"
+  with_items: groups['pangu-storm']
+
+- include: nimbus.yml
+  when: storm_nimbus_enabled
+
+- include: supervisor.yml
+
+- template: >
+    src=storm.yaml.j2
+    dest=/opt/apache-storm-0.9.4/conf/storm.yaml
+    mode=666
+    owner=fudi
+  notify: Restart storm
+
+- name: change user to fudi
+  command: chown -R fudi:fudi /opt

@@ -1,0 +1,14 @@
+[pangu-zookeeper]
+#computer200 ansible_ssh_host=166.111.143.200 ipv6_addr=166.111.143.200 pangu_zookeeper_myid=1
+ct7-pangu-s07 ansible_ssh_host=2001:da8:a0:500::1:7 ipv6_addr=2001:da8:a0:500::1:7 pangu_zookeeper_myid=1
+#ct7-pangu-s08 ansible_ssh_host=2001:da8:a0:500::1:8 ipv6_addr=2001:da8:a0:500::1:8 pangu_zookeeper_myid=2
+
+[pangu-storm]
+#computer200 storm_nimbus_enabled=true
+#computer245 ansible_ssh_host=166.111.143.245 ipv6_addr=166.111.143.245 storm_nimbus_enabled=false
+ct7-pangu-s07 storm_nimbus_enabled=true
+ct7-pangu-s08 ansible_ssh_host=2001:da8:a0:500::1:8 ipv6_addr=2001:da8:a0:500::1:8 storm_nimbus_enabled=false
+
+[pangu-redis]
+#computer200
+ct7-pangu-s07
