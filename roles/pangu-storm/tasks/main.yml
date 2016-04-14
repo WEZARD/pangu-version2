@@ -7,7 +7,7 @@
 
 - file: path=/opt/apache-storm-0.9.4/data state=directory mode="u=rwx,g=rx,o=rx"
 
-- name: change user to fudi
+- name: change user to pangu
   command: chown -R pangu:pangu /opt
 
 - name: add hostname
