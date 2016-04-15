@@ -5,8 +5,8 @@
 - name: install zookeeper
   yum: name=/opt/zookeeper-3.4.6-1.x86_64.rpm state=present
 
-- name: change user to fudi
-  command: chown -R fudi:fudi /opt
+- name: change user to pangu
+  command: chown -R pangu:pangu /opt
 
 - name: add zookeeper.conf
   copy: src=zookeeper.ini dest=/etc/supervisord.d
